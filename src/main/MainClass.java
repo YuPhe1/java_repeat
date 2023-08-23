@@ -27,7 +27,7 @@ public class MainClass {
                 System.out.println("학생수정 메뉴");
             } else if (sel == 5) {
                 System.out.println("학생삭제 메뉴");
-            } else if (sel == 0){
+            } else if (sel == 0) {
                 System.out.println("종료");
                 run = false;
             }
