@@ -1,11 +1,13 @@
 package service;
 
 import dto.StudentDTO;
+import repository.StudentRepository;
 
 import java.util.Scanner;
 
 public class StudentService {
     Scanner scanner = new Scanner(System.in);
+    StudentRepository studentRepository = new StudentRepository();
     // 학생등록 메서드
     // 매개변수 없음.
     // 리턴 없음.
@@ -25,7 +27,12 @@ public class StudentService {
         studentDTO.setStudentName(studentName);
         studentDTO.setStudentMajor(studentMajor);
         studentDTO.setStudentMobile(studentMobile);
-        // 정보가 DTO에 담겼는지 확인
-        System.out.println(studentDTO.toString());
+
+        boolean result = studentRepository.save(studentDTO);
+        if(result){
+            System.out.println("등록성공");
+        } else {
+            System.out.println("등록실패");
+        }
     }
 }
