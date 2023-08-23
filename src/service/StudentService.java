@@ -48,11 +48,11 @@ public class StudentService {
     public void findAll() {
         List<StudentDTO> studentDTOList = studentRepository.findAll();
         for (StudentDTO studentDTO : studentDTOList) {
-//            System.out.println(studentDTO.toString());
+//            System.out.println(studentDTO);
             System.out.println("studentDTO = " + studentDTO);
         }
 //        for(int i = 0; i < studentDTOList.size(); i++){
-//            System.out.println(studentDTOList.get(i).toString());
+//            System.out.println(studentDTOList.get(i));
 //        }
     }
 }
