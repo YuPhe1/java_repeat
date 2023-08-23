@@ -55,4 +55,16 @@ public class StudentService {
 //            System.out.println(studentDTOList.get(i));
 //        }
     }
+
+
+    public void findById() {
+        System.out.print("검색할 학번> ");
+        int id = scanner.nextInt();
+        StudentDTO studentDTO = studentRepository.findByID((long)id);
+        if (studentDTO.getStudentName() == null) {
+            System.out.println("해당 학번의 학생이 없습니다.");
+        } else {
+            System.out.println(studentDTO);
+        }
+    }
 }

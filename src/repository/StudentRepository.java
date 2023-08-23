@@ -10,6 +10,8 @@ public class StudentRepository {
     private List<StudentDTO> studentDTOList = new ArrayList<>();
 
     public boolean save(StudentDTO studentDTO){
+        int id = studentDTOList.size() + 1;
+        studentDTO.setId((long)id);
         try {
             studentDTOList.add(studentDTO);
             return true;
@@ -20,5 +22,16 @@ public class StudentRepository {
 
     public List<StudentDTO> findAll() {
         return studentDTOList;
+    }
+
+    public StudentDTO findByID(long id) {
+        StudentDTO studentDTO = new StudentDTO();
+        for(StudentDTO studentDTO1 : studentDTOList){
+            if(studentDTO1.getId() == id){
+                studentDTO = studentDTO1;
+                break;
+            }
+        }
+        return studentDTO;
     }
 }
