@@ -1,5 +1,7 @@
 package main;
 
+import service.StudentService;
+
 import java.util.Scanner;
 
 public class MainClass {
@@ -10,6 +12,7 @@ public class MainClass {
     // 를 선택하는 코드를 작성합시다.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        StudentService studentService = new StudentService();
         boolean run = true;
         while (run) {
             System.out.println("= = = = = = = = = = 메 뉴 = = = = = = = = = = =");
@@ -18,7 +21,7 @@ public class MainClass {
             System.out.print("메뉴선택> ");
             int sel = scanner.nextInt();
             if(sel == 1){
-                System.out.println("학생등록 메뉴");
+                studentService.save();
             } else if (sel == 2) {
                 System.out.println("학생조회 메뉴");
             } else if (sel == 3) {
