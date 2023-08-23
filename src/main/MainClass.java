@@ -25,7 +25,7 @@ public class MainClass {
             } else if (sel == 2) {
                 System.out.println("학생조회 메뉴");
             } else if (sel == 3) {
-                System.out.println("학생목록 메뉴");
+                studentService.findAll();
             } else if (sel == 4) {
                 System.out.println("학생수정 메뉴");
             } else if (sel == 5) {

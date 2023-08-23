@@ -17,4 +17,8 @@ public class StudentRepository {
             return false;
         }
     }
+
+    public List<StudentDTO> findAll() {
+        return studentDTOList;
+    }
 }
