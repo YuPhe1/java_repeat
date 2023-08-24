@@ -38,7 +38,7 @@ public class MainClass {
             } else if (sel == 4) {
                 studentService.update();
             } else if (sel == 5) {
-                studentService.remove();
+                studentService.delete();
             } else if (sel == 0) {
                 System.out.println("종료");
                 run = false;

@@ -34,7 +34,7 @@ public class StudentRepository {
         return null;
     }
 
-    public StudentDTO remove(long id) {
+    public StudentDTO delete(long id) {
         for (int i = 0; i < studentDTOList.size(); i++) {
             if (id == studentDTOList.get(i).getId()) {
                 return studentDTOList.remove(i);

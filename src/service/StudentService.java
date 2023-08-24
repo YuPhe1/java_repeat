@@ -67,10 +67,10 @@ public class StudentService {
         }
     }
 
-    public void remove() {
+    public void delete() {
         System.out.print("삭제할 학생의 학번> ");
         long id = scanner.nextLong();
-        if (studentRepository.remove(id) != null) {
+        if (studentRepository.delete(id) != null) {
             System.out.println("삭제성공");
         } else {
             System.out.println("해당 학번의 학생이 없습니다.");
