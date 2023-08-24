@@ -76,9 +76,9 @@ public class MemberService {
     }
 
     public void update() {
-        System.out.print("이메일> ");
+        System.out.print("이메일확인> ");
         String memberEmail = scanner.next();
-        System.out.print("비밀번호> ");
+        System.out.print("비밀번호확인> ");
         String memberPassword = scanner.next();
         if(loginMemberDTO.getMemberEmail().equals(memberEmail)
                 && loginMemberDTO.getMemberPassword().equals(memberPassword)){
