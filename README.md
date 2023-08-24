@@ -11,3 +11,13 @@
 - oooDTO Class
   - Service <-> Repository 간에 객체를 주고 받을 때 활용하는 전달을 위한 클래스
   - DTO(Data Transfer Object), VO와 동일한 역할
+
+### Wrapper 클래스 타입, Primitive 타입
+1. Primitive 타입
+- int, long, double, boolean 등 기본 변수 타입
+2. Wrapper 클래스 타입
+- Integer, Long, Double, Boolean 등 클래스 타입
+- 클래스 객체 처럼 사용이 가능함.(null 가능)
+- List, Map 과 같은 객체 사용시 <> 내에 기본형 타입을 사용하는 경우 Wrapper 클래스 이름을 사용
+  - 정수를 담는 ArrayList:
+    - List<Integer> list = new ArrayList<>();
