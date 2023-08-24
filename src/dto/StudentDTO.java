@@ -6,6 +6,16 @@ public class StudentDTO {
     private String studentMajor;
     private String studentMobile;
 
+    // 중가값을 유지하기 위해 static으로 선언
+    private static long num = 1L;
+
+    public StudentDTO( String studentName, String studentMajor, String studentMobile) {
+        this.id = num++;
+        this.studentName = studentName;
+        this.studentMajor = studentMajor;
+        this.studentMobile = studentMobile;
+    }
+
     public StudentDTO() {
     }
 

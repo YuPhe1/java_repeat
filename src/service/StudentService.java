@@ -25,10 +25,10 @@ public class StudentService {
         String studentMajor = scanner.next();
         System.out.print("전화번호> ");
         String studentMobile = scanner.next();
-        StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setStudentName(studentName);
-        studentDTO.setStudentMajor(studentMajor);
-        studentDTO.setStudentMobile(studentMobile);
+        StudentDTO studentDTO = new StudentDTO(studentName, studentMajor, studentMobile);
+//        studentDTO.setStudentName(studentName);
+//        studentDTO.setStudentMajor(studentMajor);
+//        studentDTO.setStudentMobile(studentMobile);
 
         boolean result = studentRepository.save(studentDTO);
         if (result) {
@@ -58,44 +58,35 @@ public class StudentService {
 
     public void findById() {
         System.out.print("조회할 학생의 학번> ");
-        int id = scanner.nextInt();
-        StudentDTO studentDTO = studentRepository.findByID((long)id);
-        if (studentDTO.getStudentName() == null) {
+        long id = scanner.nextLong();
+        StudentDTO studentDTO = studentRepository.findByID(id);
+        if (studentDTO == null) {
             System.out.println("해당 학번의 학생이 없습니다.");
         } else {
             System.out.println(studentDTO);
         }
     }
-    public void remove(){
+
+    public void remove() {
         System.out.print("삭제할 학생의 학번> ");
-        int id = scanner.nextInt();
-        StudentDTO studentDTO = studentRepository.findByID((long)id);
-        if (studentDTO.getStudentName() == null) {
-            System.out.println("해당 학번의 학생이 없습니다.");
+        long id = scanner.nextLong();
+        if (studentRepository.remove(id) != null) {
+            System.out.println("삭제성공");
         } else {
-            if(studentRepository.remove(studentDTO)){
-                System.out.println("삭제성공");
-            } else {
-                System.out.println("삭제실패");
-            }
+            System.out.println("해당 학번의 학생이 없습니다.");
         }
+
     }
 
-    public void update(){
+    public void update() {
         System.out.print("수정할 학생의 학번> ");
-        int id = scanner.nextInt();
-        StudentDTO studentDTO = studentRepository.findByID((long)id);
-        if (studentDTO.getStudentName() == null) {
+        long id = scanner.nextLong();
+        StudentDTO studentDTO = studentRepository.findByID(id);
+        if (studentDTO == null) {
             System.out.println("해당 학번의 학생이 없습니다.");
         } else {
-            System.out.print("수정할 이름> ");
-            String studentName = scanner.next();
-            System.out.print("수정할 전공> ");
-            String studentMajor = scanner.next();
             System.out.print("수정할 전화번호> ");
             String studentMobile = scanner.next();
-            studentDTO.setStudentName(studentName);
-            studentDTO.setStudentMajor(studentMajor);
             studentDTO.setStudentMobile(studentMobile);
             studentRepository.update(studentDTO);
         }
