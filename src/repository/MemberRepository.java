@@ -17,7 +17,7 @@ public class MemberRepository {
         return memberDTOList;
     }
 
-    public MemberDTO findByEmailAndPassword(String loginEmail, String loginPassword) {
+    public MemberDTO login(String loginEmail, String loginPassword) {
         for(MemberDTO memberDTO : memberDTOList){
             if(memberDTO.getMemberEmail().equals(loginEmail)
                     && memberDTO.getMemberPassword().equals(loginPassword)){

@@ -51,7 +51,7 @@ public class MemberService {
         String loginEmail = scanner.next();
         System.out.print("비밀번호> ");
         String loginPassword = scanner.next();
-        MemberDTO memberDTO = memberRepository.findByEmailAndPassword(loginEmail, loginPassword);
+        MemberDTO memberDTO = memberRepository.login(loginEmail, loginPassword);
         if(memberDTO == null){
             System.out.println("로그인 실패");
             return false;
