@@ -36,9 +36,9 @@ public class MainClass {
             } else if (sel == 3) {
                 studentService.findAll();
             } else if (sel == 4) {
-                System.out.println("학생수정 메뉴");
+                studentService.update();
             } else if (sel == 5) {
-                System.out.println("학생삭제 메뉴");
+                studentService.remove();
             } else if (sel == 0) {
                 System.out.println("종료");
                 run = false;

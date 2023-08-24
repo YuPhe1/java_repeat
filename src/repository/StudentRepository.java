@@ -8,10 +8,9 @@ import java.util.List;
 public class StudentRepository {
     // 학생정보를 저장할 리스트
     private List<StudentDTO> studentDTOList = new ArrayList<>();
-
+    private long id = 1;
     public boolean save(StudentDTO studentDTO){
-        int id = studentDTOList.size() + 1;
-        studentDTO.setId((long)id);
+        studentDTO.setId(id++);
         try {
             studentDTOList.add(studentDTO);
             return true;
@@ -33,5 +32,18 @@ public class StudentRepository {
             }
         }
         return studentDTO;
+    }
+
+    public boolean remove(StudentDTO studentDTO) {
+        return studentDTOList.remove(studentDTO);
+    }
+
+    public void update(StudentDTO studentDTO) {
+        long id = studentDTO.getId();
+        for(StudentDTO studentDTO1 : studentDTOList){
+            if(studentDTO1.getId() == id){
+                studentDTO1 = studentDTO;
+            }
+        }
     }
 }
