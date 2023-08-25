@@ -63,7 +63,7 @@ public class MemberService {
     }
 
     public boolean delete() {
-        System.out.println("비밀번호> " );
+        System.out.print("비밀번호> " );
         String loginPassword = scanner.next();
         if(loginPassword.equals(loginMemberDTO.getMemberPassword())) {
             System.out.println("회원정보 : " + loginMemberDTO);
@@ -71,10 +71,10 @@ public class MemberService {
             String sel = scanner.next();
             if (sel.equalsIgnoreCase("y")) {
                 memberRepository.delete(loginMemberDTO.getId());
-                return false;
+                return true;
             } else {
                 System.out.println("탈퇴를 취소합니다.");
-                return true;
+                return false;
             }
         }else {
             System.out.println("비밀번호가 틀렸습니다.");

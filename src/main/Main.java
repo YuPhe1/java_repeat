@@ -36,7 +36,7 @@ public class Main {
                 if(!login) {
                     memberService.findAll();
                 } else {
-                    login = memberService.delete();
+                    login = !memberService.delete();
                 }
             } else if (sel == 0) {
                 System.out.println("종료");
