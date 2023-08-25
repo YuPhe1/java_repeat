@@ -63,15 +63,22 @@ public class MemberService {
     }
 
     public boolean delete() {
-        System.out.println("회원정보 : " + loginMemberDTO);
-        System.out.print("삭제하시겠습니까?  (y/n) > ");
-        String sel = scanner.next();
-        if(sel.equalsIgnoreCase("y")){
-           memberRepository.delete(loginMemberDTO.getId());
-           return false;
-        } else {
-            System.out.println("탈퇴를 취소합니다.");
-            return true;
+        System.out.println("비밀번호> " );
+        String loginPassword = scanner.next();
+        if(loginPassword.equals(loginMemberDTO.getMemberPassword())) {
+            System.out.println("회원정보 : " + loginMemberDTO);
+            System.out.print("삭제하시겠습니까?  (y/n) > ");
+            String sel = scanner.next();
+            if (sel.equalsIgnoreCase("y")) {
+                memberRepository.delete(loginMemberDTO.getId());
+                return false;
+            } else {
+                System.out.println("탈퇴를 취소합니다.");
+                return true;
+            }
+        }else {
+            System.out.println("비밀번호가 틀렸습니다.");
+            return false;
         }
     }
 
@@ -86,6 +93,7 @@ public class MemberService {
             System.out.print("수정할 전화번호> ");
             String updateMobile = scanner.next();
             memberRepository.update(loginMemberDTO.getId(), updateMobile);
+            System.out.println("수정된 정보" + loginMemberDTO);
         } else {
             System.out.println("이메일 또는 비밀번호가 틀렸습니다.");
         }
