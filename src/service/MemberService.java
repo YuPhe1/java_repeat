@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class MemberService {
     MemberRepository memberRepository = new MemberRepository();
     // 로그인 한 사용자 정보
-   private static MemberDTO loginMemberDTO = null;
+   private static String loginEmail = null;
     Scanner scanner = new Scanner(System.in);
     public void save(){
         boolean checkEmail = false;
@@ -43,7 +43,7 @@ public class MemberService {
     }
 
     public void logout() {
-        loginMemberDTO = null;
+        loginEmail = null;
     }
 
     public boolean login() {
@@ -57,7 +57,7 @@ public class MemberService {
             return false;
         } else {
             System.out.println("로그인 성공");
-            loginMemberDTO = memberDTO;
+            MemberService.loginEmail =  loginEmail;
             return true;
         }
     }
@@ -65,7 +65,8 @@ public class MemberService {
     public boolean delete() {
         System.out.print("비밀번호> " );
         String loginPassword = scanner.next();
-        if(loginPassword.equals(loginMemberDTO.getMemberPassword())) {
+        MemberDTO loginMemberDTO = memberRepository.login(loginEmail, loginPassword);
+        if(loginMemberDTO != null) {
             System.out.println("회원정보 : " + loginMemberDTO);
             System.out.print("삭제하시겠습니까?  (y/n) > ");
             String sel = scanner.next();
@@ -83,6 +84,7 @@ public class MemberService {
     }
 
     public void update() {
+        MemberDTO loginMemberDTO = memberRepository.findByEmail(loginEmail);
         System.out.print("이메일확인> ");
         String memberEmail = scanner.next();
         System.out.print("비밀번호확인> ");

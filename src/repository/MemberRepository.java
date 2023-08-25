@@ -59,4 +59,12 @@ public class MemberRepository {
         }
         return true;
     }
+
+    public MemberDTO findByEmail(String loginEmail) {
+        for(MemberDTO memberDTO : memberDTOList){
+            if(memberDTO.getMemberEmail().equals(loginEmail))
+                return memberDTO;
+        }
+        return null;
+    }
 }
