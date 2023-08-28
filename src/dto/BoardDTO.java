@@ -6,7 +6,7 @@ public class BoardDTO {
     private String boardWriter;
     private String boardContents;
     private String boardPass;
-    private int boardHits;
+    private Integer boardHits;
 
     private static long num = 1L;
 
