@@ -6,7 +6,7 @@ public class BoardDTO {
     private String boardWriter;
     private String boardContents;
     private String boardPass;
-    private int boardHits;
+    private int boardHits = 0;
 
     private static long num = 1L;
 
@@ -19,7 +19,6 @@ public class BoardDTO {
         this.boardWriter = boardWriter;
         this.boardContents = boardContents;
         this.boardPass = boardPass;
-        this.boardHits = 0;
     }
 
     public Long getId() {
