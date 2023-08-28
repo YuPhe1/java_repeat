@@ -21,16 +21,25 @@ public class BoardService {
     }
 
     public void save(){
-        System.out.print("제목> ");
-        String boardTitle = scanner.next();
-        System.out.print("작성자> ");
-        String boardWriter = scanner.next();
-        System.out.print("내용> ");
-        String boardContents = scanner.next();
-        System.out.print("비밀번호> ");
-        String boardPass = scanner.next();
+        String boardTitle = "", boardWriter ="", boardContents ="", boardPass ="";
+        while (boardTitle.isEmpty()) {  // 글 제목을 입력할 때 까지 반복
+            System.out.print("제목> ");
+            boardTitle = scanner.nextLine();
+        }
+        while (boardWriter.isEmpty()) { // 작성자를 입력할 때 까지 반복
+            System.out.print("작성자> ");
+            boardWriter = scanner.next();
+        }
+        while (boardContents.isEmpty()) {   // 글 내용을 입력할 때 까지 반복
+            System.out.print("내용> ");
+            boardContents = scanner.nextLine();
+        }
+        while (boardPass.isEmpty()) {   // 비밀번호를 입력할 때 까지 반복
+            System.out.print("비밀번호> ");
+            boardPass = scanner.next();
+        }
         BoardDTO boardDTO = new BoardDTO(boardTitle, boardWriter, boardContents, boardPass);
-        boardRepository.save(boardDTO);
+        boardRepository.save(boardDTO); // 글 저장
     }
 
     public void find() {
@@ -60,9 +69,13 @@ public class BoardService {
             System.out.print("글 비밀번호> ");
             String updatePass = scanner.next();
             if(updatePass.equals(boardDTO.getBoardPass())){
-                System.out.print("수정할 글 내용>");
-                String updateCotents = scanner.next();
-                boardRepository.update(id, updateCotents);
+                System.out.print("수정할 글 내용(취소시 공백입력)>");
+                String updateCotents = scanner.nextLine();
+                if(updateCotents.isEmpty()){
+                    System.out.println("수정이 취소되었습니다.");
+                } else {
+                    boardRepository.update(id, updateCotents);
+                }
             } else {
                 System.out.println("비밀번호가 틀렸습니다.");
             }
