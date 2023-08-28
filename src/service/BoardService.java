@@ -21,6 +21,7 @@ public class BoardService {
     }
 
     public void save(){
+
         String boardTitle = "", boardWriter ="", boardContents ="", boardPass ="";
         while (boardTitle.isEmpty()) {  // 글 제목을 입력할 때 까지 반복
             System.out.print("제목> ");
@@ -30,13 +31,14 @@ public class BoardService {
             System.out.print("작성자> ");
             boardWriter = scanner.next();
         }
+        scanner.nextLine();
         while (boardContents.isEmpty()) {   // 글 내용을 입력할 때 까지 반복
             System.out.print("내용> ");
             boardContents = scanner.nextLine();
         }
         while (boardPass.isEmpty()) {   // 비밀번호를 입력할 때 까지 반복
             System.out.print("비밀번호> ");
-            boardPass = scanner.next();
+            boardPass = scanner.nextLine();
         }
         BoardDTO boardDTO = new BoardDTO(boardTitle, boardWriter, boardContents, boardPass);
         boardRepository.save(boardDTO); // 글 저장
@@ -66,8 +68,9 @@ public class BoardService {
         Long id = scanner.nextLong();
         BoardDTO boardDTO = boardRepository.findById(id);
         if(boardDTO != null){
+            scanner.nextLine();
             System.out.print("글 비밀번호> ");
-            String updatePass = scanner.next();
+            String updatePass = scanner.nextLine();
             if(updatePass.equals(boardDTO.getBoardPass())){
                 System.out.print("수정할 글 내용(취소시 공백입력)>");
                 String updateCotents = scanner.nextLine();
