@@ -11,7 +11,7 @@ public class Main {
         boolean run = true;
         while (run) {
             System.out.println("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
-            System.out.println("1.글목록 | 2.글작성 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 0.종료");
+            System.out.println("1.글목록 | 2.글작성 | 3.글조회 | 4.글수정 | 5.글삭제 | 6.검색 | 7.샘플데이터저장 | 0.종료");
             System.out.println("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
             System.out.print("메뉴선택> ");
             int sel = scanner.nextInt();
@@ -30,6 +30,8 @@ public class Main {
                 boardService.delete();
             } else if (sel == 6) {
                 boardService.findByTitle();
+            } else if (sel == 7) {
+                boardService.sampleData();
             } else if (sel == 0) {
                 System.out.println("종료");
                 run = false;

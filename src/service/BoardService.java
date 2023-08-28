@@ -115,4 +115,11 @@ public class BoardService {
                     "\t" + boardDTO.getBoardHits());
         }
     }
+
+    public void sampleData() {
+        for(int i = 1; i <= 10; i++) {
+            BoardDTO boardDTO = new BoardDTO("title" + i, "writer" + i, "contetnt" + i, "pass" + i);
+            boardRepository.save(boardDTO);
+        }
+    }
 }
