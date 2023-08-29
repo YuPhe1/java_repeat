@@ -12,29 +12,21 @@ public class BankService {
     BankRepository bankRepository = new BankRepository();
 
     public void clientSave() {
-        String clientName = "";
-        while (clientName.isEmpty()) {
-            System.out.print("계좌주> ");
-            clientName = scanner.next();
-        }
+        System.out.print("계좌주> ");
+        String clientName = scanner.next();
         String accountNumber = "";
         while (true) {
             System.out.print("계좌번호> ");
             accountNumber = scanner.next();
-            if(!accountNumber.isEmpty()) {
-                ClientDTO checkClientDTO = bankRepository.checkByAccountNumber(accountNumber);
-                if (checkClientDTO == null) {
-                    break;
-                } else {
-                    System.out.println("이미 사용중인 계좌입니다.");
-                }
+            ClientDTO checkClientDTO = bankRepository.checkByAccountNumber(accountNumber);
+            if (checkClientDTO == null) {
+                break;
+            } else {
+                System.out.println("이미 사용중인 계좌입니다.");
             }
         }
-        String clientPass = "";
-        while (clientPass.isEmpty()) {
-            System.out.print("계좌비밀번호> ");
-            clientPass = scanner.next();
-        }
+        System.out.print("계좌비밀번호> ");
+        String clientPass = scanner.next();
         ClientDTO clientDTO = new ClientDTO(clientName, accountNumber, clientPass);
         if (bankRepository.clientSave(clientDTO)) {
             System.out.println("계좌생성");
