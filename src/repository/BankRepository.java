@@ -62,4 +62,18 @@ public class BankRepository {
     public boolean accountSave(AccountDTO accountDTO) {
         return accountDTOList.add(accountDTO);
     }
+
+    /**
+     * 출금
+     * @param accountNumber 출금할 계좌
+     * @param outBalance 출금 금액
+     */
+    public void outBalance(String accountNumber, int outBalance) {
+        for(ClientDTO clientDTO : clientDTOList){
+            if(clientDTO.getAccountNumber().equals(accountNumber)) {
+                clientDTO.setBalance(clientDTO.getBalance() - outBalance);
+                break;
+            }
+        }
+    }
 }

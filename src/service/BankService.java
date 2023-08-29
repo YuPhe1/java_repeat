@@ -85,8 +85,16 @@ public class BankService {
         if(clientDTO == null){
             System.out.println("없는 계좌입니다.");
         } else {
-
-            AccountDTO accountDTO = new AccountDTO(accountNumber, 0, outBalance);
+            if(clientDTO.getBalance() > outBalance) {
+                AccountDTO accountDTO = new AccountDTO(accountNumber, 0, outBalance);
+                if(bankRepository.accountSave(accountDTO)){
+                    bankRepository.outBalance(accountNumber, outBalance);
+                } else {
+                    System.out.println("출금 실패");
+                }
+            } else {
+                System.out.println("잔액이 부족합니다.");
+            }
         }
     }
 }
