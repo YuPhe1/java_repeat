@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ClientDTO {
     private Long id;
-    private String clintName;
+    private String clientName;
     private String accountNumber;
     private String accountPass;
     private String clientCreatedAt;
@@ -16,9 +16,9 @@ public class ClientDTO {
     public ClientDTO() {
     }
 
-    public ClientDTO(String clintName, String accountNumber, String accountPass) {
+    public ClientDTO(String clientName, String accountNumber, String accountPass) {
         this.id = num++;
-        this.clintName = clintName;
+        this.clientName = clientName;
         this.accountNumber = accountNumber;
         this.accountPass = accountPass;
         LocalDateTime now = LocalDateTime.now();
@@ -33,12 +33,12 @@ public class ClientDTO {
         this.id = id;
     }
 
-    public String getClintName() {
-        return clintName;
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setClintName(String clintName) {
-        this.clintName = clintName;
+    public void setClintName(String clientName) {
+        this.clientName = clientName;
     }
 
     public String getAccountNumber() {
@@ -77,7 +77,7 @@ public class ClientDTO {
     public String toString() {
         return "ClientDTO{" +
                 "id=" + id +
-                ", clintName='" + clintName + '\'' +
+                ", clientName='" + clientName + '\'' +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", accountPass='" + accountPass + '\'' +
                 ", clientCreatedAt='" + clientCreatedAt + '\'' +
