@@ -50,4 +50,11 @@ public class BankService {
             System.out.println(clientDTO);
         }
     }
+
+    public void sampleData() {
+        for(int i = 1 ; i <11; i++){
+            ClientDTO clientDTO = new ClientDTO("clientName" + i, "accountNumber" + i, "accountPass" + i);
+            bankRepository.clientSave(clientDTO);
+        }
+    }
 }

@@ -11,7 +11,7 @@ public class BankMain {
         boolean run = true;
         while (run) {
             System.out.println("= = = = = = = = = = = = = = 메뉴 선택 = = = = = = = = = = = = =");
-            System.out.println("1.계좌 생성 | 2.잔액조회 | 3.입금 | 4.출금 | 5.입출금내역조회 | 6.계좌목록 | 0.종료");
+            System.out.println("1.계좌 생성 | 2.잔액조회 | 3.입금 | 4.출금 | 5.입출금내역조회 | 6.계좌목록 | 7.샘플데이터 | 0.종료");
             System.out.println("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
             System.out.print("메뉴선택> ");
             int sel = scanner.nextInt();
@@ -27,6 +27,8 @@ public class BankMain {
 
             } else if(sel == 6){
                 bankService.findAll();
+            } else if(sel == 7){
+                bankService.sampleData();
             } else if(sel == 0){
                 System.out.println("종료");
                 run = false;
