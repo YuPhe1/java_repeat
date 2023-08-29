@@ -39,4 +39,15 @@ public class BankService {
             System.out.println(clientDTO);
         }
     }
+
+    public void checkbalance() {
+        System.out.print("조회할 계좌번호> ");
+        String accountNumber = scanner.next();
+        ClientDTO clientDTO = bankRepository.checkByAccountNumber(accountNumber);
+        if(clientDTO == null){
+            System.out.println("없는 계좌입니다.");
+        } else {
+            System.out.println(clientDTO);
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class BankMain {
             if(sel == 1){
                 bankService.save();
             } else if(sel == 2){
-
+                bankService.checkbalance();
             } else if(sel == 3){
 
             } else if(sel == 4){
