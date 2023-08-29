@@ -77,6 +77,11 @@ public class BankRepository {
         }
     }
 
+    /**
+     * 입출금내역
+     * @param accountNumber 계좌번호
+     * @return  해당계좌의 입출금 내역
+     */
     public List<AccountDTO> findAllRecordByAccount(String accountNumber) {
         List<AccountDTO> accountDTOS = new ArrayList<>();
         for(AccountDTO accountDTO : accountDTOList){
@@ -86,12 +91,31 @@ public class BankRepository {
         return accountDTOS;
     }
 
+    /**
+     * 입금내역
+     * @param accountNumber 계좌번호
+     * @return 해당계좌의 입금내역
+     */
     public List<AccountDTO> findInbalanceRecordByAccount(String accountNumber) {
         List<AccountDTO> inBalanceList = new ArrayList<>();
         for(AccountDTO accountDTO : accountDTOList){
-            if(accountDTO.getAccountNumber().equals(accountNumber) && accountDTO.getWithdraw() == 0)
+            if(accountDTO.getAccountNumber().equals(accountNumber) && accountDTO.getWithdraw() == 0) // 입금은 출금금액이 0
                 inBalanceList.add(accountDTO);
         }
         return inBalanceList;
+    }
+
+    /**
+     * 출금 내역
+     * @param accountNumber 계좌번호
+     * @return 해당계좌의 출금내역
+     */
+    public List<AccountDTO> findOutBalanceRecordByAccount(String accountNumber) {
+        List<AccountDTO> outBalanceList = new ArrayList<>();
+        for(AccountDTO accountDTO : accountDTOList){
+            if(accountDTO.getAccountNumber().equals(accountNumber) && accountDTO.getDeposit() == 0) // 출금은 입금금액이 0
+                outBalanceList.add(accountDTO);
+        }
+        return outBalanceList;
     }
 }
