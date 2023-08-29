@@ -79,7 +79,7 @@ public class BankService {
     public void outBalance() {
         System.out.print("출금할 계좌번호> ");
         String accountNumber = scanner.next();
-        System.out.println("계좌 비밀번호> ");
+        System.out.print("계좌 비밀번호> ");
         String accountPass = scanner.next();
         System.out.print("출금할 금액> ");
         int outBalance = scanner.nextInt();
