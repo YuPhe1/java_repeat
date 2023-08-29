@@ -85,4 +85,13 @@ public class BankRepository {
         }
         return accountDTOS;
     }
+
+    public List<AccountDTO> findInbalanceRecordByAccount(String accountNumber) {
+        List<AccountDTO> inBalanceList = new ArrayList<>();
+        for(AccountDTO accountDTO : accountDTOList){
+            if(accountDTO.getAccountNumber().equals(accountNumber) && accountDTO.getWithdraw() == 0)
+                inBalanceList.add(accountDTO);
+        }
+        return inBalanceList;
+    }
 }

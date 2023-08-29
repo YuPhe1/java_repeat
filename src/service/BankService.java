@@ -88,7 +88,7 @@ public class BankService {
             System.out.println("없는 계좌입니다.");
         } else {
             if(clientDTO.getAccountPass().equals(accountPass)) {
-                if (clientDTO.getBalance() > outBalance) {
+                if (clientDTO.getBalance() >= outBalance) {
                     AccountDTO accountDTO = new AccountDTO(accountNumber, 0, outBalance);
                     if (bankRepository.accountSave(accountDTO)) {
                         bankRepository.outBalance(accountNumber, outBalance);
@@ -119,7 +119,9 @@ public class BankService {
                     for (AccountDTO accountDTO : accountDTOList)
                         System.out.println(accountDTO);
                 } else if (sel == 2){
-
+                    List<AccountDTO> inBalanceList = bankRepository.findInbalanceRecordByAccount(accountNumber);
+                    for(AccountDTO accountDTO: inBalanceList)
+                        System.out.println(accountDTO);
                 } else if (sel == 3){
 
                 } else if (sel == 0){
