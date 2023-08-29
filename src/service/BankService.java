@@ -53,7 +53,7 @@ public class BankService {
 
     public void sampleData() {
         for(int i = 1 ; i <11; i++){
-            ClientDTO clientDTO = new ClientDTO("clientName" + i, "accountNumber" + i, "accountPass" + i);
+            ClientDTO clientDTO = new ClientDTO("clientName" + i, "account" + i, "accountPass" + i);
             bankRepository.clientSave(clientDTO);
         }
     }
