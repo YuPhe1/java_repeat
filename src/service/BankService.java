@@ -47,7 +47,7 @@ public class BankService {
         if(clientDTO == null){
             System.out.println("없는 계좌입니다.");
         } else {
-            System.out.println(clientDTO);
+            System.out.println(clientDTO.getBalance() + "원");
         }
     }
 
