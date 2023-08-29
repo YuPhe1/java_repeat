@@ -103,4 +103,31 @@ public class BankService {
             }
         }
     }
+
+    public void findAccountRecord() {
+        System.out.print("계좌번호> ");
+        String accountNumber = scanner.next();
+        ClientDTO clientDTO = bankRepository.checkByAccountNumber(accountNumber);
+        if(clientDTO == null){
+            System.out.println("없는 계좌입니다.");
+        } else {
+            while (true){
+                System.out.println("1.전체내역 | 2.입금내역 | 3.출금내역 | 0.종료");
+                int sel = scanner.nextInt();
+                if(sel == 1){
+                    List<AccountDTO> accountDTOList = bankRepository.findAllRecordByAccount(accountNumber);
+                    for (AccountDTO accountDTO : accountDTOList)
+                        System.out.println(accountDTO);
+                } else if (sel == 2){
+
+                } else if (sel == 3){
+
+                } else if (sel == 0){
+                    break;
+                } else {
+                    System.out.println("다시입력");
+                }
+            }
+        }
+    }
 }

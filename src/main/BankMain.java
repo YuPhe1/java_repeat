@@ -24,7 +24,7 @@ public class BankMain {
             } else if(sel == 4){
                 bankService.outBalance();
             } else if(sel == 5){
-
+                bankService.findAccountRecord();
             } else if(sel == 6){
                 bankService.findAll();
             } else if(sel == 7){

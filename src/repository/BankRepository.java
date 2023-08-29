@@ -76,4 +76,13 @@ public class BankRepository {
             }
         }
     }
+
+    public List<AccountDTO> findAllRecordByAccount(String accountNumber) {
+        List<AccountDTO> accountDTOS = new ArrayList<>();
+        for(AccountDTO accountDTO : accountDTOList){
+            if(accountDTO.getAccountNumber().equals(accountNumber))
+                accountDTOS.add(accountDTO);
+        }
+        return accountDTOS;
+    }
 }
