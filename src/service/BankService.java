@@ -11,6 +11,9 @@ public class BankService {
     Scanner scanner = new Scanner(System.in);
     BankRepository bankRepository = new BankRepository();
 
+    /**
+     * 계좌 생성
+     */
     public void clientSave() {
         System.out.print("계좌주> ");
         String clientName = scanner.next();
@@ -18,7 +21,7 @@ public class BankService {
         while (true) {
             System.out.print("계좌번호> ");
             accountNumber = scanner.next();
-            ClientDTO checkClientDTO = bankRepository.checkByAccountNumber(accountNumber);
+            ClientDTO checkClientDTO = bankRepository.checkByAccountNumber(accountNumber);  // 중복체크
             if (checkClientDTO == null) {
                 break;
             } else {
@@ -35,6 +38,9 @@ public class BankService {
         }
     }
 
+    /**
+     * 전체계좌 조회
+     */
     public void findAll() {
         List<ClientDTO> clientDTOList = bankRepository.findAll();
         for (ClientDTO clientDTO : clientDTOList) {
@@ -42,6 +48,9 @@ public class BankService {
         }
     }
 
+    /**
+     * 잔액조회
+     */
     public void checkbalance() {
         System.out.print("조회할 계좌번호> ");
         String accountNumber = scanner.next();
@@ -53,6 +62,9 @@ public class BankService {
         }
     }
 
+    /**
+     * 샘플데이터 생성
+     */
     public void sampleData() {
         for (int i = 1; i < 11; i++) {
             ClientDTO clientDTO = new ClientDTO("clientName" + i, "account" + i, "pass" + i);
@@ -60,6 +72,9 @@ public class BankService {
         }
     }
 
+    /**
+     * 입금
+     */
     public void inBalance() {
         System.out.print("입금할 계좌번호> ");
         String accountNumber = scanner.next();
@@ -78,6 +93,9 @@ public class BankService {
         }
     }
 
+    /**
+     * 출금
+     */
     public void outBalance() {
         System.out.print("출금할 계좌번호> ");
         String accountNumber = scanner.next();
@@ -106,6 +124,9 @@ public class BankService {
         }
     }
 
+    /**
+     * 입출금 내역 조회
+     */
     public void findAccountRecord() {
         System.out.print("계좌번호> ");
         String accountNumber = scanner.next();
