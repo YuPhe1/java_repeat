@@ -79,21 +79,27 @@ public class BankService {
     public void outBalance() {
         System.out.print("출금할 계좌번호> ");
         String accountNumber = scanner.next();
+        System.out.println("계좌 비밀번호> ");
+        String accountPass = scanner.next();
         System.out.print("출금할 금액> ");
         int outBalance = scanner.nextInt();
         ClientDTO clientDTO = bankRepository.checkByAccountNumber(accountNumber);
         if(clientDTO == null){
             System.out.println("없는 계좌입니다.");
         } else {
-            if(clientDTO.getBalance() > outBalance) {
-                AccountDTO accountDTO = new AccountDTO(accountNumber, 0, outBalance);
-                if(bankRepository.accountSave(accountDTO)){
-                    bankRepository.outBalance(accountNumber, outBalance);
+            if(clientDTO.getAccountPass().equals(accountPass)) {
+                if (clientDTO.getBalance() > outBalance) {
+                    AccountDTO accountDTO = new AccountDTO(accountNumber, 0, outBalance);
+                    if (bankRepository.accountSave(accountDTO)) {
+                        bankRepository.outBalance(accountNumber, outBalance);
+                    } else {
+                        System.out.println("출금 실패");
+                    }
                 } else {
-                    System.out.println("출금 실패");
+                    System.out.println("잔액이 부족합니다.");
                 }
             } else {
-                System.out.println("잔액이 부족합니다.");
+                System.out.println("입력정보가 틀렸습니다.");
             }
         }
     }
