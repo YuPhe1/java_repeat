@@ -22,7 +22,7 @@ public class BankMain {
             } else if(sel == 3){
                 bankService.inBalance();
             } else if(sel == 4){
-
+                bankService.outBalance();
             } else if(sel == 5){
 
             } else if(sel == 6){

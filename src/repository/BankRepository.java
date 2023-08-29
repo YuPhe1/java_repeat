@@ -24,14 +24,27 @@ public class BankRepository {
         return null;
     }
 
+    /**
+     * @return 전체 계좌를 반환
+     */
     public List<ClientDTO> findAll() {
         return clientDTOList;
     }
 
+    /**
+     * 계좌생성정보 저장
+     * @param clientDTO 저장할 계좌정보
+     * @return 저장 성공유무
+     */
     public boolean clientSave(ClientDTO clientDTO) {
         return clientDTOList.add(clientDTO);
     }
 
+    /**
+     * 입금
+     * @param accountNumber 입금할 계좌번호
+     * @param inBalance 임금 금액
+     */
     public void inBalance(String accountNumber, int inBalance) {
         for(ClientDTO clientDTO : clientDTOList){
             if(clientDTO.getAccountNumber().equals(accountNumber)) {
@@ -41,6 +54,11 @@ public class BankRepository {
         }
     }
 
+    /**
+     * 거래내역 저장
+     * @param accountDTO 거래내역
+     * @return 저장 성공 유무
+     */
     public boolean accountSave(AccountDTO accountDTO) {
         return accountDTOList.add(accountDTO);
     }

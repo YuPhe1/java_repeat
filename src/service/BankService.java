@@ -75,4 +75,18 @@ public class BankService {
             }
         }
     }
+
+    public void outBalance() {
+        System.out.print("출금할 계좌번호> ");
+        String accountNumber = scanner.next();
+        System.out.print("출금할 금액> ");
+        int outBalance = scanner.nextInt();
+        ClientDTO clientDTO = bankRepository.checkByAccountNumber(accountNumber);
+        if(clientDTO == null){
+            System.out.println("없는 계좌입니다.");
+        } else {
+
+            AccountDTO accountDTO = new AccountDTO(accountNumber, 0, outBalance);
+        }
+    }
 }
