@@ -4,28 +4,37 @@ import dto.*;
 import repository.BankRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class BankService {
     Scanner scanner = new Scanner(System.in);
     BankRepository bankRepository = new BankRepository();
 
-    public void save() {
-        System.out.print("계좌주> ");
-        String clientName = scanner.next();
+    public void clientSave() {
+        String clientName = "";
+        while (clientName.isEmpty()) {
+            System.out.print("계좌주> ");
+            clientName = scanner.next();
+        }
         String accountNumber = "";
         while (true) {
             System.out.print("계좌번호> ");
             accountNumber = scanner.next();
-            ClientDTO checkClientDTO = bankRepository.checkByAccountNumber(accountNumber);
-            if (checkClientDTO == null) {
-                break;
-            } else {
-                System.out.println("이미 사용중인 계좌입니다.");
+            if(!accountNumber.isEmpty()) {
+                ClientDTO checkClientDTO = bankRepository.checkByAccountNumber(accountNumber);
+                if (checkClientDTO == null) {
+                    break;
+                } else {
+                    System.out.println("이미 사용중인 계좌입니다.");
+                }
             }
         }
-        System.out.print("계좌비밀번호> ");
-        String clientPass = scanner.next();
+        String clientPass = "";
+        while (clientPass.isEmpty()) {
+            System.out.print("계좌비밀번호> ");
+            clientPass = scanner.next();
+        }
         ClientDTO clientDTO = new ClientDTO(clientName, accountNumber, clientPass);
         if (bankRepository.clientSave(clientDTO)) {
             System.out.println("계좌생성");

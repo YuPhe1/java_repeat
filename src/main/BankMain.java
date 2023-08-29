@@ -16,7 +16,7 @@ public class BankMain {
             System.out.print("메뉴선택> ");
             int sel = scanner.nextInt();
             if(sel == 1){
-                bankService.save();
+                bankService.clientSave();
             } else if(sel == 2){
                 bankService.checkbalance();
             } else if(sel == 3){
