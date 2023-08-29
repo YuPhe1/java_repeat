@@ -31,4 +31,17 @@ public class BankRepository {
     public boolean clientSave(ClientDTO clientDTO) {
         return clientDTOList.add(clientDTO);
     }
+
+    public void inBalance(String accountNumber, int inBalance) {
+        for(ClientDTO clientDTO : clientDTOList){
+            if(clientDTO.getAccountNumber().equals(accountNumber)) {
+                clientDTO.setBalance(clientDTO.getBalance() + inBalance);
+                break;
+            }
+        }
+    }
+
+    public boolean accountSave(AccountDTO accountDTO) {
+        return accountDTOList.add(accountDTO);
+    }
 }

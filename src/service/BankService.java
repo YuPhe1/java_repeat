@@ -57,4 +57,22 @@ public class BankService {
             bankRepository.clientSave(clientDTO);
         }
     }
+
+    public void inBalance() {
+        System.out.print("입금할 계좌번호> ");
+        String accountNumber = scanner.next();
+        System.out.print("입금할 금액> ");
+        int inBalance = scanner.nextInt();
+        ClientDTO clientDTO = bankRepository.checkByAccountNumber(accountNumber);
+        if(clientDTO == null){
+            System.out.println("없는 계좌입니다.");
+        } else {
+            AccountDTO accountDTO = new AccountDTO(accountNumber, inBalance, 0);
+            if(bankRepository.accountSave(accountDTO)){
+                bankRepository.inBalance(accountNumber, inBalance);
+            } else {
+                System.out.println("입금실패");
+            }
+        }
+    }
 }

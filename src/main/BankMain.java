@@ -20,7 +20,7 @@ public class BankMain {
             } else if(sel == 2){
                 bankService.checkbalance();
             } else if(sel == 3){
-
+                bankService.inBalance();
             } else if(sel == 4){
 
             } else if(sel == 5){
